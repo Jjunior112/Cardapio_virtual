@@ -1,0 +1,114 @@
+:root {
+  --cor0: #fefefe;
+  --cor1: #efefef;
+  --cor2: #000000;
+  --cor3: #910C00;
+  --cor4: #F7D50C;
+  --cor5: #573102;
+  --cor6: #FCA300;
+}
+
+/*Card */
+
+.cardCardapio {
+  background-color: var(--cor3);
+  color: var(--cor1);
+  border: 1px solid #333;
+  width: 250px;
+  height: 450px;
+  border-radius: 10px;
+  padding: 1em;
+  margin: 0 auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  transition: .5s ease-in-out;
+  text-align: center;
+}
+
+.cardCardapio:hover {
+  transform: scale(1.02);
+  background-color: var(--cor6);
+  box-shadow: -2px 2px 2px 2px #000;
+  color: var(--cor2);
+  cursor: pointer;
+}
+
+.cardCardapio h3,
+h4 {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardCardapio h4 {
+  font-size: 20pt;
+}
+
+.cardCardapio img {
+  width: 250px;
+  height: 200px;
+  border-radius: 10px;
+}
+.cardCardapio a{
+  color: var(--cor1);
+}
+
+.cardCardapio a:hover{
+  color: var(--cor2);
+}
+.cardCardapio svg{
+  font-size: 2em;
+
+}
+
+/*Cart*/
+
+.cardCart {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--cor3);
+  color: var(--cor1);
+  border-radius: 10px;
+  margin: .5em;
+  padding: .5em;
+}
+
+.cardCart p{
+  text-align: center;
+}
+
+.add {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+
+}
+
+.add button,
+.count button {
+  height: 20px;
+  margin: 1em;
+}
+
+.add button:hover,
+.count button:hover {
+  cursor: pointer;
+
+}
+
+.count {
+  display: flex;
+  padding: 1em;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Cart Page*/
+
+.cartItems{
+  display: block;
+}
+
