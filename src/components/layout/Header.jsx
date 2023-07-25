@@ -1,7 +1,9 @@
+
 import NavBar from "./NavBar"
 
 
-const Header = ({ cart,msg }) => {
+const Header = ({ cart, msg }) => {
+   
     return (
         <header>
             <h1>Pizzaria ABC</h1>

@@ -5,7 +5,7 @@ import CardCardapio from "./components/layout/CardCardapio"
 
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 
@@ -204,11 +204,33 @@ function App() {
       setCartClass('cartHide')
     }
   }
+  const [isNavSticky, setIsNavSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      // Defina o valor a partir do qual você deseja que a navbar fique fixa.
+      const stickyThreshold = 100;
+      setIsNavSticky(scrollY > stickyThreshold);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  const showMessageForSeconds = (seconds) => {
+    setMsg('msgShow');
+    setTimeout(() => {
+      setMsg('msgHide');
+    }, seconds * 1000);
+  };               
+
 
 
   return (
     <>
-      <div className='fixed'>
+      <div className={` ${isNavSticky ? 'sticky' : ''}`}>
         <Header cart={cartShow} msg={msg} />
 
         <div className={cartClass}>
@@ -255,7 +277,7 @@ function App() {
                 decrement={decrement}
                 handleAddCart={
                   () => {
-                    
+
                     const newCart = [...cart,
 
                     { id: item.id, pedido: item.nome, preco: item.preco, qtde: count }];
@@ -267,6 +289,9 @@ function App() {
                       console.log(cart);
 
                       setCount(0);
+                      showMessageForSeconds(2)
+
+                      
                     }
 
 

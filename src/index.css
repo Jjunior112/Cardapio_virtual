@@ -14,14 +14,25 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: var(--cor1);
+  
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: var(--cor1);
+  box-shadow: 2px 2px 2px 2px var(--cor2);
 }
 
 header {
   text-align: center;
-  font-size: 15pt;
+  font-size: 12pt;
+
 
 }
-
 
 header h1 {
   color: var(--cor5);
@@ -35,14 +46,15 @@ nav {
   justify-content: end;
   align-items: center;
   background-color: var(--cor6);
-  padding: 1em;
+  padding: .5em;
 }
-nav button{
+
+nav button {
   background-color: transparent;
   border: none;
 }
 nav svg {
-  font-size: 35pt;
+  font-size: 25pt;
   color: var(--cor5);
 }
 
@@ -52,15 +64,14 @@ nav svg:hover {
 }
 
 main {
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   background-color: var(--cor1);
   flex-wrap: wrap;
   column-gap: .5em;
+  
 
 }
-
 
 footer {
   text-align: center;
@@ -85,14 +96,15 @@ footer a:not(:first-child) {
   margin-left: 1em;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   background-color: var(--cor6);
   width: 10px;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
   background-color: var(--cor3);
   border-radius: 10px;
-  
+
 }
 
 
