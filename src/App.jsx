@@ -7,8 +7,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import { useState, useEffect } from 'react';
 
-
-
+import { GiTrashCan } from "react-icons/gi";
 
 
 function App() {
@@ -224,9 +223,7 @@ function App() {
     setTimeout(() => {
       setMsg('msgHide');
     }, seconds * 1000);
-  };               
-
-
+  };
 
   return (
     <>
@@ -247,14 +244,31 @@ function App() {
               cart.map((item, index) => (
                 <div key={index} className='cartFinal'>
                   <p>{item.pedido}</p>
-                  <p>{item.preco}</p>
+                  <p>R$ {item.preco},00</p>
                   <p>{item.qtde}</p>
-                  <p>{item.qtde * item.preco}</p>
+                  <p>R$ {item.sub},00</p>
+
+                  <button onClick={() => {
+
+                    const newCart = [...cart]
+                    const filteredCart = newCart.filter(cart => cart.id !== item.id ? cart : null)
+                    setCart(filteredCart)
+
+                  }
+
+                  }><GiTrashCan /></button>
 
                 </div>
               ))
             }
-            <p>Total</p>
+            <div className="total">
+              <p>Total</p>
+              {
+                cart.length > 0 && (
+                  <p>R$ {cart[0].sub},00</p>
+                )
+              }
+            </div>
 
           </div>
         </div>
@@ -280,7 +294,8 @@ function App() {
 
                     const newCart = [...cart,
 
-                    { id: item.id, pedido: item.nome, preco: item.preco, qtde: count }];
+                    { id: item.id, pedido: item.nome, preco: item.preco, qtde: count, sub: count * item.preco }];
+                   
 
                     if (count > 0) {
 
@@ -290,8 +305,6 @@ function App() {
 
                       setCount(0);
                       showMessageForSeconds(2)
-
-                      
                     }
 
 

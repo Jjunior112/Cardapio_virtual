@@ -118,7 +118,7 @@ h4 {
 
 .cartInfo {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   border-bottom: 1px solid var(--cor2);
 }
 
@@ -128,8 +128,35 @@ h4 {
 
 .cartFinal {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
+.cartFinal button{
+  background-color: transparent;
+  border: none;
+}
+.cartFinal svg{
+  font-size: 15pt;
+  color: var(--cor1);
+}
+.cartFinal svg:hover{
+  cursor: pointer;
+  color: var(--cor4);
+}
+.total{
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  border-top: 1px solid var(--cor2);
+  font-weight: 900;
+}
+.total>p:first-child{
+  grid-column: 1;
+}
+.total>p:last-child{
+  grid-column: 4;
+}
+
+
+
 
 @media (width<600px) {
   .cardCardapio {
