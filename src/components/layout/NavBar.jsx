@@ -1,20 +1,15 @@
 import { GiBasket } from 'react-icons/gi'
-import { Link } from 'react-router-dom'
 
 
-
-const NavBar = () => {
+const NavBar = ({cart}) => {
 
 
 
 
     return (
         <nav>
-
-            <div>
-                <Link to='/'>Cardapio</Link>
-            </div>
-            <Link to='/cart'> <GiBasket /></Link>
+            
+            <button onClick={cart} > <GiBasket /></button>
         </nav>
     )
 }

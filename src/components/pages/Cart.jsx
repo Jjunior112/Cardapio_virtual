@@ -1,13 +1,9 @@
-
-import { useState } from "react";
 import CardCart from "../layout/CardCart";
-import { GiBasket } from "react-icons/gi";
+
 
 
 const Cart = () => {
  
-
-
   const pizzas = [
 
     {
