@@ -91,6 +91,15 @@ h4 {
 }
 
 /*Cart*/
+
+.msgHide{
+  display: none;
+  
+}
+.msgShow{
+  background-color: var(--cor5);
+  color: var(--cor1);
+}
 .cartHide{
   display: none;
   

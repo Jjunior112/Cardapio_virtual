@@ -184,7 +184,8 @@ function App() {
 
   const [count, setCount] = useState(0);
   const [cart, setCart] = useState([]);
-  const [cartClass,setCartClass]=useState('cartHide')
+  const [cartClass, setCartClass] = useState('cartHide');
+  const [msg, setMsg] = useState('msgHide');
 
   const increment = () => {
     setCount(count + 1);
@@ -195,42 +196,45 @@ function App() {
       setCount(count - 1);
     }
   }
-  const cartShow = ()=>{
-    if(cartClass==='cartHide'){
+  const cartShow = () => {
+    if (cartClass === 'cartHide') {
       setCartClass('cart')
     }
-    else{
+    else {
       setCartClass('cartHide')
     }
   }
 
+
   return (
     <>
-      <Header cart={cartShow}/>
-      
-      <div className={cartClass}>
-        <div className='cartInfo'>
-          <p>Pedido</p>
-          <p>Preço</p>
-          <p>Qtde</p>
-          <p>Sub-total</p>
-          
-        </div>
-        <div>
+      <div className='fixed'>
+        <Header cart={cartShow} msg={msg} />
 
-          {
-            cart.map((item, index) => (
-              <div key={index} className='cartFinal'>
-                <p>{item.pedido}</p>
-                <p>{item.preco}</p>
-                <p>{item.qtde}</p>
-                <p>{item.qtde * item.preco}</p>
-                
-              </div>
-            ))
-          }
-          <p>Total</p>
-          
+        <div className={cartClass}>
+          <div className='cartInfo'>
+            <p>Pedido</p>
+            <p>Preço</p>
+            <p>Qtde</p>
+            <p>Sub-total</p>
+
+          </div>
+          <div>
+
+            {
+              cart.map((item, index) => (
+                <div key={index} className='cartFinal'>
+                  <p>{item.pedido}</p>
+                  <p>{item.preco}</p>
+                  <p>{item.qtde}</p>
+                  <p>{item.qtde * item.preco}</p>
+
+                </div>
+              ))
+            }
+            <p>Total</p>
+
+          </div>
         </div>
       </div>
 
@@ -238,12 +242,36 @@ function App() {
         {
           itens.map((item, index) => (
             <div key={index}>
-              <CardCardapio nome={item.nome} img={item.img} alt={item.alt} desc={item.desc} preco={item.preco} count={count} increment={increment} decrement={decrement} handleAddCart={() => {
-                const newCart = [...cart, { pedido: item.nome, preco: item.preco, qtde: count }];
-                setCart(newCart);
-                console.log(cart);
-                setCount(0)
-              }} />
+
+              <CardCardapio
+
+                nome={item.nome}
+                img={item.img}
+                alt={item.alt}
+                desc={item.desc}
+                preco={item.preco}
+                count={count}
+                increment={increment}
+                decrement={decrement}
+                handleAddCart={
+                  () => {
+                    
+                    const newCart = [...cart,
+
+                    { id: item.id, pedido: item.nome, preco: item.preco, qtde: count }];
+
+                    if (count > 0) {
+
+                      setCart(newCart);
+
+                      console.log(cart);
+
+                      setCount(0);
+                    }
+
+
+
+                  }} />
 
 
             </div>

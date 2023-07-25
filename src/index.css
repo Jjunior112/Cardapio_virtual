@@ -22,6 +22,7 @@ header {
 
 }
 
+
 header h1 {
   color: var(--cor5);
   font-family: fantasy;
@@ -51,6 +52,7 @@ nav svg:hover {
 }
 
 main {
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   background-color: var(--cor1);
