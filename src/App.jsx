@@ -1,10 +1,9 @@
-
 import './App.css'
 
 import CardCardapio from "./components/layout/CardCardapio"
-
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+
 import { useState, useEffect } from 'react';
 
 import { GiTrashCan } from "react-icons/gi";
@@ -186,6 +185,7 @@ function App() {
   const [cartClass, setCartClass] = useState('cartHide');
   const [msg, setMsg] = useState('msgHide');
 
+
   const increment = () => {
     setCount(count + 1);
   }
@@ -224,6 +224,48 @@ function App() {
       setMsg('msgHide');
     }, seconds * 1000);
   };
+  const buy = () => {
+
+    if (cart.length > 0) {
+
+      const phoneNumber = '+5531982208900';
+      const pedido = [];
+      const qtde = []
+
+      for (let i = 0; i < cart.length; i++) {
+        pedido.push(cart[i].pedido);
+        qtde.push(cart[i].qtde);
+
+      }
+
+      const message = 'Olá gostaria de pedir os seguintes itens:'
+      //  const qtdes = 'nas respectivas quantidades:\n'  + qtde.join('\n')
+
+      const msg = () => {
+        const msgFinal = [];
+
+        for (let i = 0; i < pedido.length; i++) {
+          msgFinal.push(` ${qtde[i]} - ${pedido[i]}`)
+
+        }
+        return msgFinal
+      }
+
+      var msgFinal = msg()
+
+      var msgWhats = message + '\n' + msgFinal
+
+
+
+      const newMsg = msgWhats.split(',').join('\n')
+      console.log(newMsg)
+
+      const url = `https://api.whatsapp.com/send?phone=${encodeURIComponent(phoneNumber)}&text=${encodeURIComponent(newMsg)}`;
+
+      window.open(url, '_blank');
+    }
+  }
+
 
   return (
     <>
@@ -241,35 +283,42 @@ function App() {
           <div>
 
             {
-              cart.map((item, index) => (
-                
-                <div key={index} className='cartFinal'>
-                  <p>{item.pedido}</p>
-                  <p>R$ {item.preco},00</p>
-                  <p>{item.qtde}</p>
-                  <p>R$ {item.preco*item.qtde},00</p>
+              (cart.length > 0 ? (
+                cart.map((item, index) => (
 
-                  <button onClick={() => {
+                  <div key={index} className='cartFinal'>
+                    <p>{item.pedido}</p>
+                    <p>R$ {item.preco},00</p>
+                    <p>{item.qtde}</p>
+                    <p>R$ {item.preco * item.qtde},00</p>
 
-                    const newCart = [...cart]
-                    const filteredCart = newCart.filter(cart => cart.id !== item.id ? cart : null)
-                    setCart(filteredCart)
+                    <button onClick={() => {
 
-                  }
+                      const newCart = [...cart]
+                      const filteredCart = newCart.filter(cart => cart.id !== item.id ? cart : null)
+                      setCart(filteredCart)
 
-                  }><GiTrashCan /></button>
+                    }
 
-                </div>
-              ))
+                    }><GiTrashCan /></button>
+
+                  </div>
+                )))
+                : (
+                  <div className="cartFinal">
+                    <h3 className='empty'>O carrinho está vazio!</h3>
+                  </div>
+                ))
 
             }
             <div className="total">
               <p>Total</p>
               {
                 cart.length > 0 && (
-                  <p>R$ {cart[0].preco},00</p>
+                  <p className='price'>R$ {cart[0].preco},00</p>
                 )
               }
+              <button onClick={buy}>Finalizar Pedido</button>
             </div>
 
           </div>
@@ -293,29 +342,37 @@ function App() {
                 decrement={decrement}
                 handleAddCart={
                   () => {
-                    const existingitem = cart.find((cartItem) => cartItem.id === item.id)
+                    const existingItem = cart.find((cartItem) => cartItem.id === item.id)
 
                     const newCart = [...cart,
 
-                    { id: item.id, pedido: item.nome, preco: item.preco, qtde: count,  }];
+                    { id: item.id, pedido: item.nome, preco: item.preco, qtde: count, }];
 
 
-                    if (count > 0 && existingitem) {
+                    if (count > 0 && existingItem) {
 
                       setCart(cart.map((cartItem) =>
-                        cartItem.id === item.id ? { ...cartItem, qtde: cartItem.qtde + count}:cartItem
+                        cartItem.id === item.id ?
+                          { ...cartItem, qtde: cartItem.qtde + count } : cartItem
                       ));
-                      console.log(cart);
-                      
+
+
+
+
 
                       setCount(0);
+
                       showMessageForSeconds(2)
                     }
-                    if (count > 0 && !existingitem) {
+                    if (count > 0 && !existingItem) {
+
                       setCart(newCart);
+
                       setCount(0);
-                      showMessageForSeconds(2)
-                      
+                      console.log(cart)
+
+                      showMessageForSeconds(2);
+
                     }
 
 

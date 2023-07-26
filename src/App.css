@@ -142,20 +142,34 @@ h4 {
   cursor: pointer;
   color: var(--cor4);
 }
+.empty{
+  grid-column: 3;
+}
 .total{
   display: grid;
   grid-template-columns: repeat(5,1fr);
   border-top: 1px solid var(--cor2);
   font-weight: 900;
+  padding-top: .5em;
 }
 .total>p:first-child{
   grid-column: 1;
 }
-.total>p:last-child{
+.price{
   grid-column: 4;
 }
-
-
+.total button{
+  grid-column: 5;
+  background-color: var(--cor4);
+  border-radius: 10px;
+  font-weight: 900;
+}
+.total button:hover{
+  grid-column: 5;
+  background-color: var(--cor6);
+  color: var(--cor2);
+  cursor: pointer;
+}
 
 
 @media (width<600px) {
