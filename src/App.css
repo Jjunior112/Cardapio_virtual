@@ -108,10 +108,10 @@ h4 {
 }
 
 .cart {
-  background-color: var(--cor3);
+  background-color: var(--cor5);
   color: var(--cor1);
   padding: .5em;
-  height: 150px;
+  height: 180px;
   overflow-x: scroll;
 }
 
@@ -120,6 +120,7 @@ h4 {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   border-bottom: 1px solid var(--cor2);
+  padding: .5em;
 }
 
 .cartInfo p {
@@ -129,7 +130,9 @@ h4 {
 .cartFinal {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  padding: .5em;
 }
+
 .cartFinal button{
   background-color: transparent;
   border: none;
@@ -152,6 +155,7 @@ h4 {
   font-weight: 900;
   padding-top: .5em;
 }
+
 .total>p:first-child{
   grid-column: 1;
 }

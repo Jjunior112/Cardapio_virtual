@@ -266,7 +266,6 @@ function App() {
     }
   }
 
-
   return (
     <>
       <div className={` ${isNavSticky ? 'sticky' : ''}`}>
