@@ -242,11 +242,12 @@ function App() {
 
             {
               cart.map((item, index) => (
+                
                 <div key={index} className='cartFinal'>
                   <p>{item.pedido}</p>
                   <p>R$ {item.preco},00</p>
                   <p>{item.qtde}</p>
-                  <p>R$ {item.sub},00</p>
+                  <p>R$ {item.preco*item.qtde},00</p>
 
                   <button onClick={() => {
 
@@ -260,12 +261,13 @@ function App() {
 
                 </div>
               ))
+
             }
             <div className="total">
               <p>Total</p>
               {
                 cart.length > 0 && (
-                  <p>R$ {cart[0].sub},00</p>
+                  <p>R$ {cart[0].preco},00</p>
                 )
               }
             </div>
@@ -291,20 +293,29 @@ function App() {
                 decrement={decrement}
                 handleAddCart={
                   () => {
+                    const existingitem = cart.find((cartItem) => cartItem.id === item.id)
 
                     const newCart = [...cart,
 
-                    { id: item.id, pedido: item.nome, preco: item.preco, qtde: count, sub: count * item.preco }];
-                   
+                    { id: item.id, pedido: item.nome, preco: item.preco, qtde: count,  }];
 
-                    if (count > 0) {
 
-                      setCart(newCart);
+                    if (count > 0 && existingitem) {
 
+                      setCart(cart.map((cartItem) =>
+                        cartItem.id === item.id ? { ...cartItem, qtde: cartItem.qtde + count}:cartItem
+                      ));
                       console.log(cart);
+                      
 
                       setCount(0);
                       showMessageForSeconds(2)
+                    }
+                    if (count > 0 && !existingitem) {
+                      setCart(newCart);
+                      setCount(0);
+                      showMessageForSeconds(2)
+                      
                     }
 
 
