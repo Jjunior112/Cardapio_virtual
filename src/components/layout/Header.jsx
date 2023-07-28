@@ -6,8 +6,8 @@ const Header = ({ cart, msg }) => {
    
     return (
         <header>
-            <h1>Pizzaria ABC</h1>
-            <p>Cardápio Online</p>
+            <h1>Cardápio</h1>
+            <h2>Conheça nossos pratos!</h2>
 
             <NavBar cart={cart} msg={msg} />
 

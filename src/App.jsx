@@ -184,7 +184,8 @@ function App() {
   const [cart, setCart] = useState([]);
   const [cartClass, setCartClass] = useState('cartHide');
   const [msg, setMsg] = useState('msgHide');
-
+  const [total, setTotal] = useState(0);
+  var totalPrice = 0;
 
   const increment = () => {
     setCount(count + 1);
@@ -208,16 +209,19 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      // Defina o valor a partir do qual você deseja que a navbar fique fixa.
+      
       const stickyThreshold = 100;
+
       setIsNavSticky(scrollY > stickyThreshold);
     };
 
     window.addEventListener('scroll', handleScroll);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
   const showMessageForSeconds = (seconds) => {
     setMsg('msgShow');
     setTimeout(() => {
@@ -265,6 +269,7 @@ function App() {
       window.open(url, '_blank');
     }
   }
+
 
   return (
     <>
@@ -314,7 +319,9 @@ function App() {
               <p>Total</p>
               {
                 cart.length > 0 && (
-                  <p className='price'>R$ {cart[0].preco},00</p>
+                  
+                    <p className='price'>R$ {total+(cart[cart.length-1].preco*cart[cart.length-1].qtde)},00</p>
+                 
                 )
               }
               <button onClick={buy}>Finalizar Pedido</button>
@@ -356,8 +363,11 @@ function App() {
                       ));
 
 
-
-
+                      for (let i = 0; i < cart.length; i++) {
+                        totalPrice += cart[i].preco * cart[i].qtde;
+                        setTotal(totalPrice)
+                      }
+                      
 
                       setCount(0);
 
@@ -368,7 +378,12 @@ function App() {
                       setCart(newCart);
 
                       setCount(0);
-                      console.log(cart)
+
+                      for (let i = 0; i < cart.length; i++) {
+                        totalPrice += cart[i].preco * cart[i].qtde;
+                        setTotal(totalPrice)
+                      }
+                      
 
                       showMessageForSeconds(2);
 

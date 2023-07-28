@@ -40,7 +40,7 @@ h4 {
   align-items: center;
 }
 
-.cardCardapio h4 {
+.cardCardapio h2 {
   font-size: 15pt;
 }
 
@@ -108,13 +108,15 @@ h4 {
 }
 
 .cart {
+  position: absolute;
+  height: 50vw;
+  width: 65%;
+  right: 0;
   background-color: var(--cor5);
   color: var(--cor1);
   padding: .5em;
-  height: 180px;
   overflow-x: scroll;
 }
-
 
 .cartInfo {
   display: grid;
@@ -189,8 +191,17 @@ h4 {
   }
 
   .count {
-    
     padding: 0em;
     
+  }
+  .cart{
+    height: 200vw;
+    width: 100%;
+  }
+  .cartInfo{
+    padding: 1em;
+  }
+  .cartInfo>p,.cartFinal,.total>p{
+    margin-left: .8em;
   }
 }
