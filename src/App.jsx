@@ -185,7 +185,9 @@ function App() {
   const [cartClass, setCartClass] = useState('cartHide');
   const [msg, setMsg] = useState('msgHide');
   const [total, setTotal] = useState(0);
+  const [isEmpty,setEmpty] = useState('emptyCart')
   var totalPrice = 0;
+
 
   const increment = () => {
     setCount(count + 1);
@@ -243,8 +245,7 @@ function App() {
       }
 
       const message = 'Olá gostaria de pedir os seguintes itens:'
-      //  const qtdes = 'nas respectivas quantidades:\n'  + qtde.join('\n')
-
+      
       const msg = () => {
         const msgFinal = [];
 
@@ -259,10 +260,8 @@ function App() {
 
       var msgWhats = message + '\n' + msgFinal
 
+      const newMsg = msgWhats.split(',').join('\n');
 
-
-      const newMsg = msgWhats.split(',').join('\n')
-      console.log(newMsg)
 
       const url = `https://api.whatsapp.com/send?phone=${encodeURIComponent(phoneNumber)}&text=${encodeURIComponent(newMsg)}`;
 
@@ -274,7 +273,7 @@ function App() {
   return (
     <>
       <div className={` ${isNavSticky ? 'sticky' : ''}`}>
-        <Header cart={cartShow} msg={msg} />
+        <Header cart={cartShow} msg={msg} isEmpty={isEmpty} />
 
         <div className={cartClass}>
           <div className='cartInfo'>
@@ -301,6 +300,9 @@ function App() {
                       const newCart = [...cart]
                       const filteredCart = newCart.filter(cart => cart.id !== item.id ? cart : null)
                       setCart(filteredCart)
+                      if(cart.length==1){
+                        setEmpty('emptyCart')
+                      }
 
                     }
 
@@ -313,6 +315,7 @@ function App() {
                     <h3 className='empty'>O carrinho está vazio!</h3>
                   </div>
                 ))
+                
 
             }
             <div className="total">
@@ -383,6 +386,7 @@ function App() {
                         totalPrice += cart[i].preco * cart[i].qtde;
                         setTotal(totalPrice)
                       }
+                      setEmpty('itemCart');
                       
 
                       showMessageForSeconds(2);

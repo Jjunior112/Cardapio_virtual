@@ -1,5 +1,5 @@
 
-import { GiBasket } from "react-icons/gi";
+import { SlBasketLoaded} from 'react-icons/sl'
 
 const CardCardapio = ({ nome, img, alt, desc, preco,count,increment,decrement,handleAddCart }) => {
    
@@ -22,7 +22,7 @@ const CardCardapio = ({ nome, img, alt, desc, preco,count,increment,decrement,ha
 
                 <p>R$ {preco * count}</p>
 
-                <button onClick={handleAddCart}><GiBasket /></button>
+                <button onClick={handleAddCart}><SlBasketLoaded/></button>
 
             </div>
 

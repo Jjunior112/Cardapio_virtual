@@ -14,7 +14,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   background-color: var(--cor1);
-  
+
 }
 
 .sticky {
@@ -36,9 +36,10 @@ header h1 {
   font-size: 16pt;
   color: var(--cor6);
 }
-header h2{
+
+header h2 {
   font-size: 26pt;
-  font-family:monospace;
+  font-family: monospace;
   color: var(--cor3);
 }
 
@@ -55,14 +56,25 @@ nav button {
   background-color: transparent;
   border: none;
 }
-nav svg {
+
+.emptyCart {
   font-size: 25pt;
-  color: var(--cor5);
+  color: var(--cor3);
 }
 
-nav svg:hover {
+.emptyCart:hover {
   cursor: pointer;
   color: #efefef;
+}
+
+.itemCart {
+  font-size: 25pt;
+  color: var(--cor3);
+}
+
+.itemCart:hover {
+  cursor: pointer;
+  color: var(--cor0);
 }
 
 main {

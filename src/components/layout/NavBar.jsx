@@ -1,12 +1,19 @@
-import { GiBasket } from 'react-icons/gi'
+import { SlBasket,SlBasketLoaded} from 'react-icons/sl'
 
 
-const NavBar = ({cart,msg}) => {
+const NavBar = ({msg,cart,isEmpty}) => {
 
     return (
         <nav>
             <p className={msg}>Adicionado com sucesso!</p>
-            <button onClick={cart} > <GiBasket /></button>
+            <button onClick={cart} className={isEmpty} >{ 
+            (isEmpty==='emptyCart')?(
+            <SlBasket />
+            ):(
+                <SlBasketLoaded/>
+            )
+
+            }</button>
         </nav>
     )
 }
