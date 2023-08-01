@@ -109,7 +109,7 @@ h4 {
 
 .cart {
   position: absolute;
-  height: 50vw;
+  height: 30vw;
   width: 65%;
   right: 0;
   background-color: var(--cor5);

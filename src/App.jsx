@@ -1,4 +1,5 @@
 import './App.css'
+import { GiTrashCan } from "react-icons/gi";
 
 import CardCardapio from "./components/layout/CardCardapio"
 import Header from './components/layout/Header';
@@ -6,7 +7,7 @@ import Footer from './components/layout/Footer';
 
 import { useState, useEffect } from 'react';
 
-import { GiTrashCan } from "react-icons/gi";
+
 
 
 function App() {
@@ -185,9 +186,14 @@ function App() {
   const [cartClass, setCartClass] = useState('cartHide');
   const [msg, setMsg] = useState('msgHide');
   const [total, setTotal] = useState(0);
-  const [isEmpty,setEmpty] = useState('emptyCart')
+  const [isEmpty, setEmpty] = useState('emptyCart')
+  const [search, setSearch] = useState('');
+
   var totalPrice = 0;
 
+  const filteredMenu = search.length > 0
+    ? itens.filter((item) => item.nome.toLowerCase().includes(search))
+    : [];
 
   const increment = () => {
     setCount(count + 1);
@@ -211,7 +217,7 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      
+
       const stickyThreshold = 100;
 
       setIsNavSticky(scrollY > stickyThreshold);
@@ -245,7 +251,7 @@ function App() {
       }
 
       const message = 'Olá gostaria de pedir os seguintes itens:'
-      
+
       const msg = () => {
         const msgFinal = [];
 
@@ -273,7 +279,7 @@ function App() {
   return (
     <>
       <div className={` ${isNavSticky ? 'sticky' : ''}`}>
-        <Header cart={cartShow} msg={msg} isEmpty={isEmpty} />
+        <Header cart={cartShow} msg={msg} isEmpty={isEmpty} value={search} onChange={(e) => setSearch(e.target.value)} />
 
         <div className={cartClass}>
           <div className='cartInfo'>
@@ -300,8 +306,11 @@ function App() {
                       const newCart = [...cart]
                       const filteredCart = newCart.filter(cart => cart.id !== item.id ? cart : null)
                       setCart(filteredCart)
-                      if(cart.length==1){
-                        setEmpty('emptyCart')
+
+                      if (cart.length == 1) {
+                        setEmpty('emptyCart');
+                        setTotal(0);
+
                       }
 
                     }
@@ -315,16 +324,22 @@ function App() {
                     <h3 className='empty'>O carrinho está vazio!</h3>
                   </div>
                 ))
-                
+
 
             }
             <div className="total">
               <p>Total</p>
               {
-                cart.length > 0 && (
-                  
-                    <p className='price'>R$ {total+(cart[cart.length-1].preco*cart[cart.length-1].qtde)},00</p>
-                 
+                cart.length > 1 && (
+
+                  <p className='price'>R$ {total + (cart[cart.length - 1].preco * cart[cart.length - 1].qtde)},00</p>
+
+                )
+              }
+              {
+                cart.length == 1 &&
+                (
+                  <p className='price'>R$ {(cart[cart.length - 1].preco * cart[cart.length - 1].qtde)},00</p>
                 )
               }
               <button onClick={buy}>Finalizar Pedido</button>
@@ -335,71 +350,143 @@ function App() {
       </div>
 
       <main>
+
         {
-          itens.map((item, index) => (
-            <div key={index}>
+          search.length > 0 ? (
+            filteredMenu.map((item, index) => (
+              <div key={index}>
 
-              <CardCardapio
+                <CardCardapio
 
-                nome={item.nome}
-                img={item.img}
-                alt={item.alt}
-                desc={item.desc}
-                preco={item.preco}
-                count={count}
-                increment={increment}
-                decrement={decrement}
-                handleAddCart={
-                  () => {
-                    const existingItem = cart.find((cartItem) => cartItem.id === item.id)
+                  nome={item.nome}
+                  img={item.img}
+                  alt={item.alt}
+                  desc={item.desc}
+                  preco={item.preco}
+                  count={count}
+                  increment={increment}
+                  decrement={decrement}
+                  handleAddCart={
+                    () => {
+                      const existingItem = cart.find((cartItem) => cartItem.id === item.id)
 
-                    const newCart = [...cart,
+                      const newCart = [...cart,
 
-                    { id: item.id, pedido: item.nome, preco: item.preco, qtde: count, }];
-
-
-                    if (count > 0 && existingItem) {
-
-                      setCart(cart.map((cartItem) =>
-                        cartItem.id === item.id ?
-                          { ...cartItem, qtde: cartItem.qtde + count } : cartItem
-                      ));
+                      { id: item.id, pedido: item.nome, preco: item.preco, qtde: count, }];
 
 
-                      for (let i = 0; i < cart.length; i++) {
-                        totalPrice += cart[i].preco * cart[i].qtde;
-                        setTotal(totalPrice)
+                      if (count > 0 && existingItem) {
+
+                        setCart(cart.map((cartItem) =>
+                          cartItem.id === item.id ?
+                            { ...cartItem, qtde: cartItem.qtde + count } : cartItem
+                        ));
+
+
+                        for (let i = 0; i < cart.length; i++) {
+                          totalPrice += cart[i].preco * cart[i].qtde;
+                          setTotal(totalPrice)
+                        }
+
+
+                        setCount(0);
+
+                        showMessageForSeconds(2)
                       }
-                      
+                      if (count > 0 && !existingItem) {
 
-                      setCount(0);
+                        setCart(newCart);
 
-                      showMessageForSeconds(2)
-                    }
-                    if (count > 0 && !existingItem) {
+                        setCount(0);
 
-                      setCart(newCart);
+                        for (let i = 0; i < cart.length; i++) {
+                          totalPrice += cart[i].preco * cart[i].qtde;
+                          setTotal(totalPrice)
+                        }
+                        setEmpty('itemCart');
 
-                      setCount(0);
 
-                      for (let i = 0; i < cart.length; i++) {
-                        totalPrice += cart[i].preco * cart[i].qtde;
-                        setTotal(totalPrice)
+                        showMessageForSeconds(2);
+
                       }
-                      setEmpty('itemCart');
-                      
-
-                      showMessageForSeconds(2);
-
-                    }
 
 
 
-                  }} />
+                    }} />
 
 
-            </div>
-          ))
+              </div>
+            ))
+
+          )
+
+            :
+            (
+              itens.map((item, index) => (
+                <div key={index}>
+
+                  <CardCardapio
+
+                    nome={item.nome}
+                    img={item.img}
+                    alt={item.alt}
+                    desc={item.desc}
+                    preco={item.preco}
+                    count={count}
+                    increment={increment}
+                    decrement={decrement}
+                    handleAddCart={
+                      () => {
+                        const existingItem = cart.find((cartItem) => cartItem.id === item.id)
+
+                        const newCart = [...cart,
+
+                        { id: item.id, pedido: item.nome, preco: item.preco, qtde: count, }];
+
+
+                        if (count > 0 && existingItem) {
+
+                          setCart(cart.map((cartItem) =>
+                            cartItem.id === item.id ?
+                              { ...cartItem, qtde: cartItem.qtde + count } : cartItem
+                          ));
+
+
+                          for (let i = 0; i < cart.length; i++) {
+                            totalPrice += cart[i].preco * cart[i].qtde;
+                            setTotal(totalPrice)
+                          }
+
+
+                          setCount(0);
+
+                          showMessageForSeconds(2)
+                        }
+                        if (count > 0 && !existingItem) {
+
+                          setCart(newCart);
+
+                          setCount(0);
+
+                          for (let i = 0; i < cart.length; i++) {
+                            totalPrice += cart[i].preco * cart[i].qtde;
+                            setTotal(totalPrice)
+                          }
+                          setEmpty('itemCart');
+
+
+                          showMessageForSeconds(2);
+
+                        }
+
+
+
+                      }} />
+
+
+                </div>
+              ))
+            )
 
         }
 

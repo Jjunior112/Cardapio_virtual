@@ -119,11 +119,6 @@ footer a:not(:first-child) {
   border-radius: 10px;
 }
 
-
-
-
-
-
 @media (width<800px) {
   main {
     grid-template-columns: repeat(2, 1fr);
