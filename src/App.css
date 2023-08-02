@@ -117,7 +117,9 @@ h4 {
   padding: .5em;
   overflow-x: scroll;
 }
-
+.cart h3{
+  text-align: center;
+}
 .cartInfo {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -135,46 +137,94 @@ h4 {
   padding: .5em;
 }
 
-.cartFinal button{
+.cartFinal button {
   background-color: transparent;
   border: none;
 }
-.cartFinal svg{
+
+.cartFinal svg {
   font-size: 15pt;
   color: var(--cor1);
 }
-.cartFinal svg:hover{
+
+.cartFinal svg:hover {
   cursor: pointer;
   color: var(--cor4);
 }
-.empty{
+
+.empty {
   grid-column: 3;
 }
-.total{
+
+.total {
   display: grid;
-  grid-template-columns: repeat(5,1fr);
+  grid-template-columns: repeat(5, 1fr);
   border-top: 1px solid var(--cor2);
   font-weight: 900;
   padding-top: .5em;
 }
 
-.total>p:first-child{
+.total>p:first-child {
   grid-column: 1;
 }
-.price{
+
+.price {
   grid-column: 4;
 }
-.total button{
+
+.total button {
   grid-column: 5;
   background-color: var(--cor4);
   border-radius: 10px;
   font-weight: 900;
+  margin-bottom: .5em;
 }
-.total button:hover{
-  grid-column: 5;
+
+.total button:hover {
   background-color: var(--cor6);
   color: var(--cor2);
   cursor: pointer;
+
+}
+
+/*form cart*/
+.cartTwo {
+  border-top: 1px solid #000000;
+}
+
+.cartTwo form {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.cartTwo form>input {
+  margin: 0 auto;
+  margin-top: 1em;
+  width: 20em;
+}
+
+.cartTwo form>select {
+  margin: 0 auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 20em;
+}
+
+.cartTwo button {
+  margin: 0 auto;
+  width: 10em;
+  padding: .5em;
+  background-color: var(--cor4);
+  border-radius: 10px;
+  font-weight: 900;
+  margin-bottom: .5em;
+}
+.cartTwo button:hover {
+  background-color: var(--cor6);
+  color: var(--cor2);
+  cursor: pointer;
+
 }
 
 
@@ -192,16 +242,21 @@ h4 {
 
   .count {
     padding: 0em;
-    
+
   }
-  .cart{
+
+  .cart {
     height: 120vw;
     width: 100%;
   }
-  .cartInfo{
+
+  .cartInfo {
     padding: 1em;
   }
-  .cartInfo>p,.cartFinal,.total>p{
+
+  .cartInfo>p,
+  .cartFinal,
+  .total>p {
     margin-left: .8em;
   }
 }

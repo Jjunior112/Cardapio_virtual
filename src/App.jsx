@@ -6,6 +6,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
 import { useState, useEffect } from 'react';
+import Cart from './components/Cart';
 
 
 
@@ -188,6 +189,7 @@ function App() {
   const [total, setTotal] = useState(0);
   const [isEmpty, setEmpty] = useState('emptyCart')
   const [search, setSearch] = useState('');
+  const [form,setForm] = useState(false);
 
   var totalPrice = 0;
 
@@ -236,7 +238,11 @@ function App() {
       setMsg('msgHide');
     }, seconds * 1000);
   };
-  const buy = () => {
+  const showForm = ()=>{
+    setForm(!form)
+  }
+  const buy = (e) => {
+    e.preventDefault()
 
     if (cart.length > 0) {
 
@@ -282,6 +288,7 @@ function App() {
         <Header cart={cartShow} msg={msg} isEmpty={isEmpty} value={search} onChange={(e) => setSearch(e.target.value)} />
 
         <div className={cartClass}>
+          <h3>Carrinho</h3>
           <div className='cartInfo'>
             <p>Pedido</p>
             <p>Preço</p>
@@ -324,8 +331,6 @@ function App() {
                     <h3 className='empty'>O carrinho está vazio!</h3>
                   </div>
                 ))
-
-
             }
             <div className="total">
               <p>Total</p>
@@ -342,8 +347,32 @@ function App() {
                   <p className='price'>R$ {(cart[cart.length - 1].preco * cart[cart.length - 1].qtde)},00</p>
                 )
               }
-              <button onClick={buy}>Finalizar Pedido</button>
+              <button onClick={showForm}>Próximo</button>
             </div>
+            {
+              form&&(
+              <div className="cartTwo">
+                <h3>Dados para entrega</h3>
+              <form>
+                  <input type="text" name="name" id="name" placeholder="Nome" required/>
+                  <input type="text" name="address" id="address" placeholder="Endereço" required/>
+
+                  <input type="text" name="reference" id="reference" placeholder="Ponto de referência" required/>
+
+                  <select name="pgt" id="pgt" required>
+                      <option value="select">Forma de pagamento</option>
+                      <option value="credito">Crédito</option>
+                      <option value="debt">Débito</option>
+                      <option value="pix">Pix</option>
+                      <option value="money">Dinheiro</option>
+                  </select>
+
+                  <button onClick={buy}>Finalizar Pedido</button>
+
+              </form>
+          </div>
+              )
+            }
 
           </div>
         </div>
