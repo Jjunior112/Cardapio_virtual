@@ -123,7 +123,7 @@ nav button {
 main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background-color: var(--cor7);
+  background-color: var(--cor1);
   flex-wrap: wrap;
   column-gap: .5em;
 }
