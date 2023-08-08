@@ -284,8 +284,7 @@ function App() {
 
       const message = 'Olá gostaria de pedir os seguintes itens:'
 
-      const data = `\n Nome: ${name} \n Endereço: ${address} \n Ponto de referência: ${reference}\n
-      Forma de pagamento: ${pay}`;
+      const data = `\n \n Dados para entrega: \n Nome: ${name} \n Endereço: ${address} \n Ponto de referência: ${reference} \n Forma de pagamento: ${pay}`;
 
       const msg = () => {
         const msgFinal = [];
