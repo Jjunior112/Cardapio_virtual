@@ -6,7 +6,6 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 
 import { useState, useEffect } from 'react';
-import Cart from './components/Cart';
 
 
 
@@ -17,6 +16,7 @@ function App() {
     {
       id: 1,
       nome: 'Pizza de Calabresa',
+      type:'pizza',
       desc: 'Calabresa, queijo derretido, molho tomate, massa fina e crocante.',
       img: 'pizza-calabresa.jpg',
       alt: 'pizza de clabresa',
@@ -26,6 +26,7 @@ function App() {
     {
       id: 2,
       nome: "Pizza Quatro Queijos",
+      type:'pizza',
       img: "quatro_queijos.jpg",
       alt: "Pizza Quatro Queijos",
       desc: "Uma deliciosa combinação de quatro queijos derretidos sobre a massa.",
@@ -35,6 +36,7 @@ function App() {
     {
       id: 3,
       nome: "Pizza de Frango com Catupiry",
+      type:'pizza',
       img: "frango_catupiry.jpg",
       alt: "Pizza de Frango com Catupiry",
       desc: "Pizza de frango desfiado com catupiry cremoso.",
@@ -44,6 +46,7 @@ function App() {
     {
       id: 4,
       nome: "Pizza Margherita",
+      type:'pizza',
       img: "margherita.jpg",
       alt: "Pizza Margherita",
       desc: "Clássica pizza Margherita com tomate, queijo mozarela e manjericão.",
@@ -52,6 +55,7 @@ function App() {
     {
       id: 5,
       nome: 'Sanduíche de Queijo',
+      type:'sanduiche',
       desc: 'Lanche completo com hambúrguer, queijo, bacon, salada e molho',
       img: 'sanduiche.jpg', alt: 'pizza de clabresa',
       preco: 18.00,
@@ -60,6 +64,7 @@ function App() {
     {
       id: 6,
       nome: "Sanduíche de Frango",
+      type:'sanduiche',
       img: "frango.jpg",
       alt: "Sanduíche de Frango",
       desc: "Sanduíche de frango grelhado com alface, tomate e maionese.",
@@ -68,6 +73,7 @@ function App() {
     {
       id: 7,
       nome: "Sanduíche Vegetariano",
+      type:'sanduiche',
       img: "vegetariano.jpg",
       alt: "Sanduíche Vegetariano",
       desc: "Opção vegetariana com alface, tomate, queijo e molho especial.",
@@ -76,6 +82,7 @@ function App() {
     {
       id: 8,
       nome: "Sanduíche de Carne Desfiada",
+      type:'sanduiche',
       img: "carne_desfiada.jpg",
       alt: "Sanduíche de Carne Desfiada",
       desc: "Sanduíche com carne bovina desfiada, cebola e molho barbecue.",
@@ -84,6 +91,7 @@ function App() {
     {
       id: 9,
       nome: "Sanduíche de Atum",
+      type:'sanduiche',
       img: "atum.jpg",
       alt: "Sanduíche de Atum",
       desc: "Sanduíche recheado com atum, milho, maionese e alface.",
@@ -92,6 +100,7 @@ function App() {
     {
       id: 10,
       nome: "Coca Cola 2l",
+      type:'bebida',
       img: "refrigerante.jpg",
       alt: "Refrigerante",
       desc: "Diversos sabores de refrigerante para acompanhar sua refeição.",
@@ -100,6 +109,7 @@ function App() {
     {
       id: 11,
       nome: "Coca Cola 600ml",
+      type:'bebida',
       img: "refrigerante.jpg",
       alt: "Refrigerante",
       desc: "Diversos sabores de refrigerante para acompanhar sua refeição.",
@@ -108,6 +118,7 @@ function App() {
     {
       id: 12,
       nome: "Pepsi 2l",
+      type:'bebida',
       img: "refrigerante.jpg",
       alt: "Refrigerante",
       desc: "Diversos sabores de refrigerante para acompanhar sua refeição.",
@@ -116,6 +127,7 @@ function App() {
     {
       id: 13,
       nome: "Antartica 2l",
+      type:'bebida',
       img: "refrigerante.jpg",
       alt: "Refrigerante",
       desc: "Diversos sabores de refrigerante para acompanhar sua refeição.",
@@ -124,6 +136,7 @@ function App() {
     {
       id: 14,
       nome: "Coca Cola lata",
+      type:'bebida',
       img: "refrigerante.jpg",
       alt: "Refrigerante",
       desc: "Diversos sabores de refrigerante para acompanhar sua refeição.",
@@ -133,6 +146,7 @@ function App() {
     {
       id: 15,
       nome: "Suco Natural de Laranja",
+      type:'bebida',
       img: "suco.jpg",
       alt: "Suco Natural",
       desc: "Variedade de sucos naturais feitos na hora.",
@@ -141,6 +155,7 @@ function App() {
     {
       id: 16,
       nome: "Suco Natural de Manga",
+      type:'bebida',
       img: "suco.jpg",
       alt: "Suco Natural",
       desc: "Variedade de sucos naturais feitos na hora.",
@@ -150,6 +165,7 @@ function App() {
     {
       id: 17,
       nome: "Suco Natural de Pêssego",
+      type:'bebida',
       img: "suco.jpg",
       alt: "Suco Natural",
       desc: "Variedade de sucos naturais feitos na hora.",
@@ -158,6 +174,7 @@ function App() {
     {
       id: 18,
       nome: "Mousse de Chocolate",
+      type:'sobremesa',
       img: "mousse_chocolate.jpg",
       alt: "Mousse de Chocolate",
       desc: "Mousse de chocolate aerado e cremoso, uma explosão de sabor.",
@@ -166,6 +183,7 @@ function App() {
     {
       id: 19,
       nome: "Tiramisù",
+      type:'sobremesa',
       img: "tiramisu.jpg",
       alt: "Tiramisù",
       desc: "Clássica sobremesa italiana à base de café, queijo mascarpone e cacau.",
@@ -174,6 +192,7 @@ function App() {
     {
       id: 20,
       nome: "Pudim",
+      type:'sobremesa',
       img: "pudim.jpg",
       alt: "Pudim",
       desc: "Pudim de leite com calda de caramelo, uma tentação irresistível.",
@@ -190,11 +209,12 @@ function App() {
   const [isEmpty, setEmpty] = useState('emptyCart')
   const [search, setSearch] = useState('');
   const [form,setForm] = useState(false);
+  const [isNavSticky, setIsNavSticky] = useState(false);
 
   var totalPrice = 0;
 
   const filteredMenu = search.length > 0
-    ? itens.filter((item) => item.nome.toLowerCase().includes(search))
+    ? itens.filter((item) => item.type.toLowerCase().includes(search))
     : [];
 
   const increment = () => {
@@ -214,7 +234,7 @@ function App() {
       setCartClass('cartHide')
     }
   }
-  const [isNavSticky, setIsNavSticky] = useState(false);
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -253,7 +273,6 @@ function App() {
       for (let i = 0; i < cart.length; i++) {
         pedido.push(cart[i].pedido);
         qtde.push(cart[i].qtde);
-
       }
 
       const message = 'Olá gostaria de pedir os seguintes itens:'
@@ -285,7 +304,12 @@ function App() {
   return (
     <>
       <div className={` ${isNavSticky ? 'sticky' : ''}`}>
-        <Header cart={cartShow} msg={msg} isEmpty={isEmpty} value={search} onChange={(e) => setSearch(e.target.value)} />
+        <Header cart={cartShow} msg={msg} isEmpty={isEmpty}
+        showAll={()=>setSearch('')}
+        showType1={()=>setSearch('pizza')}
+        showType2={()=>setSearch('sanduiche')}
+        showType3={()=>setSearch('bebida')}
+        showType4={()=>setSearch('sobremesa')} />
 
         <div className={cartClass}>
           <h3>Carrinho</h3>
@@ -381,7 +405,7 @@ function App() {
       <main>
 
         {
-          search.length > 0 ? (
+          search.length> 0 ? (
             filteredMenu.map((item, index) => (
               <div key={index}>
 

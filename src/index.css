@@ -46,17 +46,49 @@ header h2 {
 nav {
   display: flex;
   text-align: center;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
   background-color: var(--cor6);
   padding: .5em;
+}
+.cartNav{
+  display: flex;
 }
 
 nav button {
   background-color: transparent;
   border: none;
 }
-
+.menu{
+  padding: 1em;
+  border-radius: 10px;
+  border: 1px solid #000000;
+  margin: .5em;
+  opacity: 0.9;
+  transition: .5s ease-in-out;
+  color: #000000;
+}
+.menu:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  opacity: 1;
+}
+.all{
+  background-color: #910C00;
+  color: #fff;
+}
+.pizza{
+  background-color: #ffe030;
+}
+.sandwich{
+  background-color: #d7a76b;
+}
+.liquor{
+  background-color: #4deded;
+}
+.dessert{
+  background-color: rgb(255, 64, 96);
+}
 .emptyCart {
   font-size: 25pt;
   color: var(--cor3);
