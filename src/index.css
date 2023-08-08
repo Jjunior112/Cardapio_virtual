@@ -108,7 +108,9 @@ nav button {
   cursor: pointer;
   color: var(--cor0);
 }
-
+.hamburger{
+  display: none;
+}
 .hamburger-mobile{
   display: none;
 }
@@ -160,6 +162,9 @@ footer a:not(:first-child) {
 
 
 @media (width<800px) {
+  .hamburger{
+    display: block;
+  }
   .hamburger-mobile{
     display: flex;
     flex-direction: column;

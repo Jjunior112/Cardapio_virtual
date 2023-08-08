@@ -211,6 +211,13 @@ function App() {
   const [form,setForm] = useState(false);
   const [isNavSticky, setIsNavSticky] = useState(false);
 
+  //states do form
+
+  const [name,setName] = useState('');
+  const [address,setAddress] = useState('');
+  const [reference,setReference] = useState('');
+  const [pay,setPay] = useState('');
+
   var totalPrice = 0;
 
   const filteredMenu = search.length > 0
@@ -277,6 +284,9 @@ function App() {
 
       const message = 'Olá gostaria de pedir os seguintes itens:'
 
+      const data = `\n Nome: ${name} \n Endereço: ${address} \n Ponto de referência: ${reference}\n
+      Forma de pagamento: ${pay}`;
+
       const msg = () => {
         const msgFinal = [];
 
@@ -289,7 +299,7 @@ function App() {
 
       var msgFinal = msg()
 
-      var msgWhats = message + '\n' + msgFinal
+      var msgWhats = message + '\n' + msgFinal + data
 
       const newMsg = msgWhats.split(',').join('\n');
 
@@ -299,7 +309,6 @@ function App() {
       window.open(url, '_blank');
     }
   }
-
 
   return (
     <>
@@ -378,17 +387,17 @@ function App() {
               <div className="cartTwo">
                 <h3>Dados para entrega</h3>
               <form>
-                  <input type="text" name="name" id="name" placeholder="Nome" required/>
-                  <input type="text" name="address" id="address" placeholder="Endereço" required/>
+                  <input type="text" name="name" id="name" placeholder="Nome" value={name} onChange={(e)=>setName(e.target.value)} required/>
+                  <input type="text" name="address" id="address" placeholder="Endereço" value={address} onChange={(e)=>setAddress (e.target.value)} required/>
 
-                  <input type="text" name="reference" id="reference" placeholder="Ponto de referência" required/>
+                  <input type="text" name="reference" id="reference" placeholder="Ponto de referência" value={reference} onChange={(e)=>setReference(e.target.value)} required/>
 
-                  <select name="pgt" id="pgt" required>
+                  <select name="pgt" id="pgt"  value={pay} onChange={(e)=>setPay(e.target.value)} required>
                       <option value="select">Forma de pagamento</option>
                       <option value="credito">Crédito</option>
-                      <option value="debt">Débito</option>
+                      <option value="debito">Débito</option>
                       <option value="pix">Pix</option>
-                      <option value="money">Dinheiro</option>
+                      <option value="dinheiro">Dinheiro</option>
                   </select>
 
                   <button onClick={buy}>Finalizar Pedido</button>

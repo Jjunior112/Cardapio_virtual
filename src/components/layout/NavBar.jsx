@@ -27,7 +27,9 @@ const NavBar = ({ msg, cart, isEmpty, showAll, showType1, showType2, showType3, 
                     <button className='menu liquor' onClick={showType3}>Bebidas</button>
                     <button className='menu dessert' onClick={showType4}>Sobremesas</button>
                 </div>
+                <div className='hamburger'>
                 <Hamburger toggled={isOpen} toggle={setOpen} onToggle={hamburger} color='#910C00' />
+                </div>
 
                 <div className={showMenu}>
 
