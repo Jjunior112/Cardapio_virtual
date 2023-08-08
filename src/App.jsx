@@ -282,9 +282,9 @@ function App() {
         qtde.push(cart[i].qtde);
       }
 
-      const message = 'Olá gostaria de pedir os seguintes itens:'
+      const message = 'Olá gostaria de pedir os seguintes itens: \n'
 
-      const data = `\n \n Dados para entrega: \n Nome: ${name} \n Endereço: ${address} \n Ponto de referência: ${reference} \n Forma de pagamento: ${pay}`;
+      const data = `\n \n Dados para entrega: \n \n Nome: ${name} \n Endereço: ${address} \n Ponto de referência: ${reference} \n Forma de pagamento: ${pay}`;
 
       const msg = () => {
         const msgFinal = [];
