@@ -109,6 +109,13 @@ nav button {
   color: var(--cor0);
 }
 
+.hamburger-mobile{
+  display: none;
+}
+.hideMenu{
+  display: none;
+}
+
 main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -151,7 +158,16 @@ footer a:not(:first-child) {
   border-radius: 10px;
 }
 
+
 @media (width<800px) {
+  .hamburger-mobile{
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .hamburger-desktop{
+    display: none;
+  }
   main {
     grid-template-columns: repeat(2, 1fr);
   }

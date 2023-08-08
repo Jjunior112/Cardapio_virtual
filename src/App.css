@@ -115,7 +115,7 @@ h4 {
   background-color: var(--cor5);
   color: var(--cor1);
   padding: .5em;
-  overflow-x: scroll;
+  overflow: scroll;
 }
 .cart h3{
   text-align: center;
@@ -190,6 +190,7 @@ h4 {
 /*form cart*/
 .cartTwo {
   border-top: 1px solid #000000;
+  overflow: scroll;
 }
 
 .cartTwo form {
@@ -246,7 +247,7 @@ h4 {
   }
 
   .cart {
-    height: 120vw;
+    height: 25rem;
     width: 100%;
   }
 
