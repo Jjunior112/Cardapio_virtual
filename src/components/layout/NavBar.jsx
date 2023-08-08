@@ -43,7 +43,7 @@ const NavBar = ({ msg, cart, isEmpty, showAll, showType1, showType2, showType3, 
 
             <div className='cartNav'>
                 <p className={msg}>Adicionado com sucesso!</p>
-                <button onClick={cart} className={isEmpty} >{
+                <button onClick={cart} className={isEmpty} aria-label='botao para acessar o carrinho de compras' >{
                     (isEmpty === 'emptyCart') ? (
                         <SlBasket />
                     ) : (

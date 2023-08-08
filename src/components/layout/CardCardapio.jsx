@@ -22,7 +22,7 @@ const CardCardapio = ({ nome, img, alt, desc, preco,count,increment,decrement,ha
 
                 <p>R$ {preco * count}</p>
 
-                <button onClick={handleAddCart}><SlBasketLoaded/></button>
+                <button onClick={handleAddCart} aria-label='botao para adicionar item ao carrinho de compras'><SlBasketLoaded/></button>
 
             </div>
 
