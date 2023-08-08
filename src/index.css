@@ -6,6 +6,7 @@
   --cor4: #F7D50C;
   --cor5: #573102;
   --cor6: #FCA300;
+  --cor7: #450600;
 
 }
 
@@ -122,7 +123,7 @@ nav button {
 main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background-color: var(--cor1);
+  background-color: var(--cor7);
   flex-wrap: wrap;
   column-gap: .5em;
 }
