@@ -7,6 +7,7 @@
   --cor5: #573102;
   --cor6: #FCA300;
   --cor7: #450600;
+  --cor8:#3D2800;
 
 }
 
@@ -14,7 +15,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: var(--cor1);
+  background-color: var(--cor8);
 
 }
 
@@ -24,7 +25,7 @@ body {
   left: 0;
   width: 100%;
   z-index: 100;
-  background-color: var(--cor1);
+  background-color: var(--cor8);
   box-shadow: 2px 2px 2px 2px var(--cor2);
 }
 
@@ -82,13 +83,13 @@ nav button {
   background-color: #ffe030;
 }
 .sandwich{
-  background-color: #d7a76b;
+  background-color: #8A6537;
 }
 .liquor{
-  background-color: #4deded;
+  background-color: #12ABB0;
 }
 .dessert{
-  background-color: rgb(255, 64, 96);
+  background-color: #FC4CC2;
 }
 .emptyCart {
   font-size: 25pt;
@@ -123,7 +124,7 @@ nav button {
 main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background-color: var(--cor1);
+  background-color: var(--cor8);
   flex-wrap: wrap;
   column-gap: .5em;
 }
